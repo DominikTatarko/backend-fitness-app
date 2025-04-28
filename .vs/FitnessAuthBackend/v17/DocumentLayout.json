@@ -1,0 +1,57 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Uzivatel\\Desktop\\31_36_Tatarko_Dominik\\21_30_Tatarko_Dominik\\FitnessAuthBackend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E3079147-CC16-4924-BD94-E975C4B895BA}|FitnessAuthBackend\\FitnessAuthBackend.csproj|c:\\users\\uzivatel\\desktop\\31_36_tatarko_dominik\\21_30_tatarko_dominik\\fitnessauthbackend\\fitnessauthbackend\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{E3079147-CC16-4924-BD94-E975C4B895BA}|FitnessAuthBackend\\FitnessAuthBackend.csproj|solutionrelative:fitnessauthbackend\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\Uzivatel\\Desktop\\31_36_Tatarko_Dominik\\21_30_Tatarko_Dominik\\FitnessAuthBackend\\FitnessAuthBackend\\.gitignore",
+              "RelativeDocumentMoniker": "FitnessAuthBackend\\.gitignore",
+              "ToolTip": "C:\\Users\\Uzivatel\\Desktop\\31_36_Tatarko_Dominik\\21_30_Tatarko_Dominik\\FitnessAuthBackend\\FitnessAuthBackend\\.gitignore",
+              "RelativeToolTip": "FitnessAuthBackend\\.gitignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-04-28T16:48:35.438Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

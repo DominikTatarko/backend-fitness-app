@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:FitnessAplikacia.ViewModels"
+             x:Class="FitnessAplikacia.Views.HomePage"
+             BackgroundColor="#f9f9f9"
+             Padding="20">
+
+    <ContentPage.BindingContext>
+        <vm:HomePageViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="25">
+
+                <!-- User Information Section (Black Background) -->
+                <Frame Padding="15" CornerRadius="15" BackgroundColor="Black" HasShadow="True">
+                    <StackLayout>
+                        <Label x:Name="UserNameLabel" 
+                               FontSize="24" 
+                               Text="{Binding UserName}" 
+                               TextColor="White" 
+                               FontAttributes="Bold"/>
+                        <Label x:Name="EmailLabel" 
+                               FontSize="16" 
+                               TextColor="#777" 
+                               Text="{Binding Email}" />
+                    </StackLayout>
+                </Frame>
+
+                <!-- Calendar Notes Section (Black Background) -->
+                <Frame Padding="15" BackgroundColor="Black" HasShadow="True" CornerRadius="10">
+                    <StackLayout>
+                        <Label Text="Kalendár" 
+                               FontSize="30" 
+                               TextColor="White"  
+                               HorizontalOptions="Center" 
+                               FontAttributes="Bold"/>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Calendar Navigation Section (Buttons with Black Background) -->
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15" Padding="10" BackgroundColor="#f9f9f9">
+                    <Button Text="◀" Command="{Binding PreviousMonthCommand}" 
+                            BackgroundColor="black" 
+                            TextColor="White" 
+                            CornerRadius="20"
+                            Padding="10,5" 
+                            HorizontalOptions="Center" />
+                    <Label Text="{Binding CurrentMonthYear}" 
+                           FontSize="22" 
+                           TextColor="Black"  
+                           HorizontalOptions="Center"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"
+                           />
+                    <Button Text="▶" Command="{Binding NextMonthCommand}" 
+                            BackgroundColor="black" 
+                            TextColor="White" 
+                            CornerRadius="20"
+                            Padding="10,5"
+                            HorizontalOptions="Center" />
+                </StackLayout>
+
+                <!-- Calendar Grid Section (Default Background) -->
+                <CollectionView ItemsSource="{Binding Days}" 
+                                SelectionMode="Single" 
+                                SelectedItem="{Binding SelectedDay, Mode=TwoWay}"
+                                Margin="0,10">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="7" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="10" 
+                                   Margin="4" 
+                                   BorderColor="#ccc" 
+                                   CornerRadius="30"
+                                   BackgroundColor="White"
+                                   HasShadow="True"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HomePageViewModel}}, Path=SelectDayCommand}" 
+                                                           CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
+                                <Label Text="{Binding Date, StringFormat='{0:dd}'}" 
+                                       FontSize="18" 
+                                       TextColor="Black" 
+                                       HorizontalOptions="Center" 
+                                       VerticalOptions="CenterAndExpand" />
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Separator Line -->
+                <BoxView HeightRequest="1" Color="#ddd" Margin="0,10"/>
+
+                <!-- Notes Section -->
+                <Label Text="Poznámky na daný deň:" 
+                       FontSize="22" 
+                       TextColor="#333"
+                       FontAttributes="Bold"/>
+                <CollectionView ItemsSource="{Binding NotesForSelectedDay}" Margin="0,10">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal" Padding="10" BackgroundColor="#ffffff" Spacing="15">
+                                <Label Text="{Binding Content}" 
+                                       VerticalOptions="Center" 
+                                       HorizontalOptions="StartAndExpand"
+                                       TextColor="#333"/>
+                                <Button Text="Vymazať" 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HomePageViewModel}}, Path=DeleteNoteCommand}" 
+                                        CommandParameter="{Binding Id}"
+                                        BackgroundColor="#E74C3C"
+                                        TextColor="White"
+                                        CornerRadius="20"
+                                        HorizontalOptions="End"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Add Note Section -->
+                <Frame CornerRadius="10" Padding="5" BackgroundColor="#ffffff">
+                    <StackLayout Orientation="Horizontal" Spacing="10" Padding="10,0">
+                        <Entry Placeholder="Zadaj novú poznámku" 
+                               Text="{Binding NewNote}" 
+                               HorizontalOptions="FillAndExpand"
+                               BackgroundColor="Transparent"
+                               TextColor="#333"/>
+                        <Button Text="Pridať" 
+                                Command="{Binding AddNoteCommand}" 
+                                BackgroundColor="#2ECC71" 
+                                TextColor="White"
+                                CornerRadius="20"/>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Logout Button -->
+                <Button Text="Odhlasiť sa" 
+                        Command="{Binding LogoutCommand}" 
+                        BackgroundColor="#E74C3C" 
+                        TextColor="White"
+                        CornerRadius="20"
+                        Margin="0,20"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
