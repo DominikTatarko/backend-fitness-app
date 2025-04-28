@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FitnessAplikacia.Views.AddWorkoutPage"
+             
+             BackgroundColor="#f9f9f9">
+
+    <StackLayout Padding="30" Spacing="20">
+
+        <!-- Header Section -->
+        <Frame BackgroundColor="Black"
+               Padding="15"
+               CornerRadius="15"
+               HasShadow="True">
+            <Label Text="Vytvoriť Nový Trening" 
+                   FontSize="28" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   TextColor="White"/>
+        </Frame>
+
+        <!-- Input Field -->
+        <Frame Padding="10" 
+               BackgroundColor="White" 
+               CornerRadius="15"
+               BorderColor="Gray"
+               HasShadow="True">
+            <Entry x:Name="WorkoutNameEntry"
+                   Text="{Binding WorkoutName, Mode=TwoWay}"
+                   Placeholder="Zadaj názov treningu"
+                   FontSize="18"
+                   TextColor="Black"
+                   PlaceholderColor="Gray"
+                   Margin="5"/>
+        </Frame>
+
+        <!-- Save Button -->
+        <Frame BackgroundColor="#2ECC71" 
+               CornerRadius="15" 
+               Padding="15" 
+               HasShadow="True">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding SaveWorkoutCommand}" />
+            </Frame.GestureRecognizers>
+            <Label Text="💾 Uložiť trening" 
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center" 
+                   FontSize="18" 
+                   TextColor="White" 
+                   FontAttributes="Bold"/>
+        </Frame>
+
+    </StackLayout>
+</ContentPage>

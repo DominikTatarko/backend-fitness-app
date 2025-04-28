@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FitnessAplikacia.Views.StatisticPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="15" Spacing="20">
+
+            <!-- Title -->
+            <Frame Padding="15" BackgroundColor="Black" CornerRadius="12"
+                   HorizontalOptions="FillAndExpand" HasShadow="True">
+                <Label Text="Štatistiky"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       LineBreakMode="WordWrap"/>
+            </Frame>
+
+            <!-- Loading Indicator -->
+            <ActivityIndicator x:Name="loadingIndicator"
+                               IsRunning="False"
+                               IsVisible="False"
+                               HorizontalOptions="Center"
+                               VerticalOptions="CenterAndExpand" />
+
+            <!-- Set Goals Button -->
+            <Button x:Name="SetGoalsButton"
+                    Text="Nastaviť Ciel"
+                    Clicked="OnSetGoalsClicked"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    CornerRadius="15"
+                    Padding="12"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    WidthRequest="250"/>
+
+            <!-- Push-Up Stats Section -->
+            <Frame BackgroundColor="White" CornerRadius="12" Padding="15" HasShadow="True">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Štatistiky Zhybov" FontSize="22" FontAttributes="Bold"
+                           TextColor="Black" HorizontalOptions="Center"/>
+
+                    <Label Text="Cieľ:" FontSize="18" FontAttributes="Bold"/>
+                    <Label Text="{Binding PushUpGoal}" FontSize="16" TextColor="Gray"/>
+
+                    <Label Text="Tvoj Record:" FontSize="18" FontAttributes="Bold"/>
+                    <Label Text="{Binding HighestPushUp}" FontSize="16" TextColor="Gray"/>
+
+                    <Label Text="Posledný Záznamenaný Pokus:" FontSize="18" FontAttributes="Bold"/>
+                    <Label x:Name="LastPushUpValueLabel" Text="{Binding LastPushUpValue}" 
+                           FontSize="16" TextColor="Gray"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Pull-Up Stats Section -->
+            <Frame BackgroundColor="White" CornerRadius="12" Padding="15" HasShadow="True">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Štatistika Zhybov" FontSize="22" FontAttributes="Bold"
+                           TextColor="Black" HorizontalOptions="Center"/>
+
+                    <Label Text="Cieľ:" FontSize="18" FontAttributes="Bold"/>
+                    <Label Text="{Binding PullUpGoal}" FontSize="16" TextColor="Gray"/>
+
+                    <Label Text="Tvoj Record:" FontSize="18" FontAttributes="Bold"/>
+                    <Label Text="{Binding HighestPullUp}" FontSize="16" TextColor="Gray"/>
+
+                    <Label Text="Posledný Záznamenaný Pokus:" FontSize="18" FontAttributes="Bold"/>
+                    <Label x:Name="LastPullUpValueLabel" Text="{Binding LastPullUpValue}" 
+                           FontSize="16" TextColor="Gray"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Record Test Day Section -->
+            <Frame BackgroundColor="White" CornerRadius="12" Padding="15" HasShadow="True">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Zaznamenaj Svoj Testovací Deň" FontSize="22" FontAttributes="Bold"
+                           TextColor="Black" HorizontalOptions="Center"/>
+
+                    <Label Text="Kliky:" FontSize="18"/>
+                    <Entry x:Name="pushUpTestEntry" Placeholder="Enter push-up count"
+                           Keyboard="Numeric" BackgroundColor="#f5f5f5" />
+
+                    <Label Text="Zhyby:" FontSize="18"/>
+                    <Entry x:Name="pullUpTestEntry" Placeholder="Enter pull-up count"
+                           Keyboard="Numeric" BackgroundColor="#f5f5f5" />
+
+                    <Button x:Name="SubmitTestButton"
+                            Text="Potvrdiť Test"
+                            Clicked="OnSubmitTestDay"
+                            BackgroundColor="#4CAF50"
+                            TextColor="White"
+                            CornerRadius="15"
+                            Padding="12"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            WidthRequest="250"/>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

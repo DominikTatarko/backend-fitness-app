@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FitnessAplikacia.Views.VideoPage"
+             Title="Video"
+             BackgroundColor="#f9f9f9">
+    <StackLayout Padding="15" Spacing="20">
+
+        <!-- Header Section -->
+        <Frame BackgroundColor="Black"
+               Padding="10"
+               CornerRadius="15"
+               HasShadow="True">
+            <Label Text="Ukážka Cviku" 
+                   FontSize="30" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   TextColor="White"/>
+        </Frame>
+
+        <!-- WebView Frame -->
+        <Frame Padding="0"
+               Margin="5"
+               BorderColor="#ddd"
+               BackgroundColor="White"
+               CornerRadius="15"
+               HasShadow="True">
+            <WebView x:Name="YouTubeWebView"
+                     HeightRequest="300"
+                     WidthRequest="400"/>
+        </Frame>
+
+    </StackLayout>
+</ContentPage>

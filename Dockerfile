@@ -1,17 +1,16 @@
-# Use the official .NET SDK 8.0 image to build the app
+# Use a base image with .NET SDK
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the entire project into the container
-COPY . .
+# Copy only the necessary files (adjust paths as needed)
+COPY . .  # This assumes FitnessAplikacia isn't required and you are only copying what's needed for FitnessAuthBackend.
 
-# Restore the dependencies of your project (like 'dotnet restore')
-RUN dotnet restore
+# Restore dependencies for the solution (only for relevant projects)
+RUN dotnet restore FitnessAuthBackend.sln
 
-# Build and publish the application in release mode to the out directory
-RUN dotnet publish --no-restore -c Release -o out
+# Publish the application to the out directory
+RUN dotnet publish FitnessAuthBackend.sln -c Release -o out
 
-# Set the entry point for your application
+# Define entry point (adjust if necessary)
 ENTRYPOINT ["dotnet", "out/FitnessAuthBackend.dll"]

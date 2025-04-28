@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FitnessAplikacia.Views.CustomExercisesPage"
+     
+             BackgroundColor="#f9f9f9">
+
+    <ScrollView>
+        <!-- Wrap everything in a ScrollView -->
+        <StackLayout Padding="30" Spacing="25">
+
+            <!-- Header Section -->
+            <Frame BackgroundColor="Black"
+                   Padding="15"
+                   CornerRadius="15"
+                   HasShadow="True">
+                <Label Text="{Binding WorkoutName}" 
+                       FontSize="28" 
+                       FontAttributes="Bold" 
+                       HorizontalOptions="Center" 
+                       TextColor="White"/>
+            </Frame>
+
+            <!-- CollectionView for Exercises -->
+            <CollectionView ItemsSource="{Binding Exercises}" SelectionMode="None"
+                            HeightRequest="500">
+                <!-- Set a height to avoid infinite scrolling issues -->
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="15" Margin="5" BorderColor="#D3D3D3" BackgroundColor="White" HasShadow="True" CornerRadius="10">
+                            <StackLayout>
+                                <!-- Exercise Name -->
+                                <Label Text="{Binding ExerciseName}" 
+                                       FontSize="20" 
+                                       FontAttributes="Bold" 
+                                       HorizontalOptions="Start" />
+
+                                <!-- Sets -->
+                                <Label Text="{Binding Sets, StringFormat='Serie: {0}'}" 
+                                       FontSize="16" 
+                                       HorizontalOptions="Start" />
+
+                                <!-- Reps -->
+                                <Label Text="{Binding Reps, StringFormat='Opakovania: {0}'}" 
+                                       FontSize="16" 
+                                       HorizontalOptions="Start" />
+
+                                <!-- Rest Time -->
+                                <Label Text="{Binding Rest, StringFormat='Oddych: {0} sec'}" 
+                                       FontSize="16" 
+                                       HorizontalOptions="Start" />
+
+                                <!-- Delete Button -->
+                                <Button Text="Odstrániť"
+                                        Command="{Binding BindingContext.DeleteExerciseCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                        CommandParameter="{Binding UserExerciseId}"
+                                        BackgroundColor="#FF0000"
+                                        TextColor="White"
+                                        FontSize="14"
+                                        CornerRadius="10"
+                                        Margin="0,10,0,0" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Add Exercise Button -->
+            <Frame BackgroundColor="#4CAF50" 
+                   Padding="15" 
+                   CornerRadius="15" 
+                   HasShadow="True">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddExerciseCommand}" />
+                </Frame.GestureRecognizers>
+                <Label Text="Pridať Cvičenie"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontSize="18"
+                       TextColor="White"
+                       FontAttributes="Bold"/>
+            </Frame>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

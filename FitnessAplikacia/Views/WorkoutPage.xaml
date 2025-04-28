@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FitnessAplikacia.Views.WorkoutPage"
+             x:Name="PageRef"
+             
+             BackgroundColor="#f9f9f9">
+    <ScrollView>
+        <StackLayout Padding="15">
+
+            <!-- Header Section -->
+            <Frame BackgroundColor="Black"
+                   Padding="10"
+                   CornerRadius="15"
+                   HasShadow="True">
+                <Label Text="Trening" 
+                       FontSize="30" 
+                       FontAttributes="Bold" 
+                       HorizontalOptions="Center" 
+                       TextColor="White"/>
+            </Frame>
+
+            <!-- CollectionView to display exercises -->
+            <CollectionView ItemsSource="{Binding Exercises}" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="15" 
+                               Margin="5" 
+                               BorderColor="#ddd" 
+                               BackgroundColor="White" 
+                               CornerRadius="15" 
+                               HasShadow="True">
+                            <StackLayout Spacing="10">
+                                <!-- Exercise Order -->
+                                <Label Text="{Binding ExerciseOrder}" 
+                                       FontSize="14" 
+                                       TextColor="Gray" 
+                                       HorizontalOptions="Center"/>
+
+                                <!-- Exercise Name -->
+                                <Label Text="{Binding ExerciseName}" 
+                                       FontSize="20" 
+                                       FontAttributes="Bold" 
+                                       HorizontalOptions="Center" 
+                                       TextColor="#333"/>
+
+                                <!-- Description -->
+                                <Label Text="{Binding Description}" 
+                                       FontSize="14" 
+                                       TextColor="Gray" 
+                                       HorizontalOptions="Center"/>
+
+                                <!-- Reps -->
+                                <Label Text="{Binding Reps}" 
+                                       FontSize="16" 
+                                       TextColor="Black" 
+                                       HorizontalOptions="Center"/>
+
+                                <!-- Watch Video Button -->
+                                <Button Text="Video"
+                                        Command="{Binding Source={x:Reference Name=PageRef}, Path=BindingContext.NavigateToVideoCommand}"
+                                        CommandParameter="{Binding}"
+                                        BackgroundColor="#2ECC71" 
+                                        TextColor="White"
+                                        CornerRadius="10" 
+                                        Padding="10" 
+                                        HorizontalOptions="Center"/>
+                            </StackLayout>
+
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
